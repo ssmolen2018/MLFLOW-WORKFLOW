@@ -78,21 +78,26 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
     with mlflow.start_run() as active_run:
         os.environ['SPARK_CONF_DIR'] = os.path.abspath('.')
         git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
+        print("############ START LOAD RAW DATA #############")
         load_raw_data_run = _get_or_run("load_raw_data", {}, git_commit)
         ratings_csv_uri = os.path.join(load_raw_data_run.info.artifact_uri, "ratings-csv-dir")
+        print("############ START ETL DATA #############")
+        print("ratings_csv_uri="+ratings_csv_uri)
         etl_data_run = _get_or_run("etl_data",
                                    {"ratings_csv": ratings_csv_uri,
                                     "max_row_limit": max_row_limit},
                                    git_commit)
         ratings_parquet_uri = os.path.join(etl_data_run.info.artifact_uri, "ratings-parquet-dir")
-
+        print("############ START ALS  #############")
+        print("ratings_parquet_uri="+ratings_parquet_uri)
         # We specify a spark-defaults.conf to override the default driver memory. ALS requires
         # significant memory. The driver memory property cannot be set by the application itself.
         als_run = _get_or_run("als", 
                               {"ratings_data": ratings_parquet_uri, "max_iter": str(als_max_iter)},
                               git_commit)
         als_model_uri = os.path.join(als_run.info.artifact_uri, "als-model")
-
+        print("############ START KERAS  #############")
+        print("als_model_uri="+als_model_uri)
         keras_params = {
             "ratings_data": ratings_parquet_uri,
             "als_model_uri": als_model_uri,
