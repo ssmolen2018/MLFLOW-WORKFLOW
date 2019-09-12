@@ -6,6 +6,7 @@ dependencies:
   - pyspark
   - requests
   - click
+  - conda=4.7.11
   - numpy=1.17.0
   - pip:
     - tensorflow==1.13.1
