@@ -2,10 +2,11 @@ name: multistep
 channels:
   - defaults
 dependencies:
-  - python=3.6
+  - python=3.7
   - pyspark
   - requests
   - click
+  - numpy=1.17.0
   - pip:
     - tensorflow==1.13.1
     - keras==2.2.4
