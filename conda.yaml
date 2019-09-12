@@ -11,3 +11,8 @@ dependencies:
     - tensorflow==1.13.1
     - keras==2.2.4
     - mlflow>=1.0
+    - psycopg2
+    - boto3
+    - awscli
+    - jmespath
+    - s3transfer
