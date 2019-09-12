@@ -18,9 +18,9 @@ import click
               help="Limit the data size to run comfortably on a laptop.")
 def etl_data(ratings_csv, max_row_limit):
     with mlflow.start_run() as mlrun:
-        print("$$$$$$$ Inside ETL_DATA")
+        print("======= Inside ETL_DATA")
         tmpdir = tempfile.mkdtemp()
-        print("created tmpdir:"+tmpdir)
+        print("===Created tmpdir:"+tmpdir)
         ratings_parquet_dir = os.path.join(tmpdir, 'ratings-parquet')
         print("ratings_parquet_dir="+ratings_parquet_dir)
         
