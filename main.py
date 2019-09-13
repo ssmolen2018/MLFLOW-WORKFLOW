@@ -81,7 +81,7 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
         print("############ START LOAD RAW DATA #############")
         load_raw_data_run = _get_or_run("load_raw_data", {}, git_commit)
         ratings_csv_uri = os.path.join(load_raw_data_run.info.artifact_uri, "ratings-csv-dir/ratings.csv")
-        ratings_csv_data=load_raw_data_run.data.params("ratings_csv")
+        ratings_csv_data=load_raw_data_run.data.params.get("ratings_csv")
         print("############ START ETL DATA #############")
         print("ratings_csv_uri="+ratings_csv_uri)
         etl_data_run = _get_or_run("etl_data",
