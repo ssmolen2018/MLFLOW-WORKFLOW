@@ -20,9 +20,10 @@ if (ratings-csvstr.startswith( 'this' )")
 def etl_data(ratings_csv, max_row_limit):
     print("======= INSIDE ETL_DATA")
     print("ratings-csv:"+ratings-csv)
-    if (ratings-csv.startswith( '/tmp')
+    if ratings-csv.startswith( "/tmp"):
         ratings-csv = "file://"+ratings-csv
-        
+    
+    print("******* ratings-csv:"+ratings-csv)
     with mlflow.start_run() as mlrun:
       
         tmpdir = tempfile.mkdtemp()
