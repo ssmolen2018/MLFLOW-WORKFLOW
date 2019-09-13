@@ -48,3 +48,4 @@ def etl_data(ratings_csv, max_row_limit):
 
 if __name__ == '__main__':
     etl_data()
+    
