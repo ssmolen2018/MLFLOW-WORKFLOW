@@ -85,7 +85,7 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
         print("############ START ETL DATA #############")
         print("ratings_csv_uri="+ratings_csv_uri)
         etl_data_run = _get_or_run("etl_data",
-                                   {"ratings_csv": ratings_csv_data,
+                                   {"ratings_csv": "file://"+ratings_csv_data,
                                     "max_row_limit": max_row_limit},
                                    git_commit)
         ratings_parquet_uri = os.path.join(etl_data_run.info.artifact_uri, "ratings-parquet-dir")
