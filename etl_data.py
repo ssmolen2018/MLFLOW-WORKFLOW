@@ -37,7 +37,7 @@ def etl_data(ratings_csv, max_row_limit):
         ratings_df = spark.read \
             .option("header", "true") \
             .option("inferSchema", "true") \
-            .csv(ratings_csv1) \
+            .csv(ratings_csv) \
             .drop("timestamp")  # Drop unused column
         ratings_df.show()
         if max_row_limit != -1:
