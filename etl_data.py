@@ -24,7 +24,7 @@ def etl_data(ratings_csv, max_row_limit):
     else:
        ratings_csv1 = ratings_csv 
       
-    print("******* ratings_csv1:"+ratings_sv1)
+    print("******* ratings_csv1:"+ratings_csv1)
     with mlflow.start_run() as mlrun:
       
         tmpdir = tempfile.mkdtemp()
