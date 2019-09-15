@@ -20,9 +20,9 @@ def etl_data(ratings_csv, max_row_limit):
     print("======= INSIDE ETL_DATA")
     print("ratings-csv:"+ratings-csv)
     if ratings-csv.startswith( "/tmp"):
-        ratings-csv1 = "file://"+ratings-csv
+        ratings-csv1 = "file://".join(ratings-csv)
     else:
-       ratings-csv1 = ratings-csv 
+       ratings-csv1 = "".join(ratings-csv) 
       
     print("******* ratings-csv1:"+ratings-csv1)
     with mlflow.start_run() as mlrun:
