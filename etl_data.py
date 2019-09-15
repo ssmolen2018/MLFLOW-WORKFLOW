@@ -14,7 +14,6 @@ import click
 @click.command(help="Given a CSV file (see load_raw_data), transforms it into Parquet "
                     "in an mlflow artifact called 'ratings-parquet-dir'")
 @click.option("--ratings-csv:"+ratings-csv)
-if (ratings-csvstr.startswith( 'this' )")
 @click.option("--max-row-limit", default=10000,
               help="Limit the data size to run comfortably on a laptop.")
 def etl_data(ratings_csv, max_row_limit):
