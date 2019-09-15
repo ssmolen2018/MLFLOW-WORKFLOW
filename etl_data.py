@@ -18,13 +18,13 @@ import click
               help="Limit the data size to run comfortably on a laptop.")
 def etl_data(ratings_csv, max_row_limit):
     print("======= INSIDE ETL_DATA")
-    print("ratings-csv:"+ratings-csv)
-    if ratings-csv.startswith( "/tmp"):
-        ratings-csv1 = "file://".join(ratings-csv)
+    print("ratings_csv:"+ratings_csv)
+    if ratings_csv.startswith( "/tmp"):
+        ratings_csv1 = "file://"+ratings_csv)
     else:
-       ratings-csv1 = "".join(ratings-csv) 
+       ratings_csv1 = "".join(ratings_csv) 
       
-    print("******* ratings-csv1:"+ratings-csv1)
+    print("******* ratings_csv1:"+ratings-_sv1)
     with mlflow.start_run() as mlrun:
       
         tmpdir = tempfile.mkdtemp()
@@ -33,11 +33,11 @@ def etl_data(ratings_csv, max_row_limit):
         print("ratings_parquet_dir="+ratings_parquet_dir)
         
         spark = pyspark.sql.SparkSession.builder.getOrCreate()
-        print("Converting ratings CSV %s to Parquet %s" % (ratings-csv1, ratings_parquet_dir))
+        print("Converting ratings CSV %s to Parquet %s" % (ratings_csv1, ratings_parquet_dir))
         ratings_df = spark.read \
             .option("header", "true") \
             .option("inferSchema", "true") \
-            .csv(ratings-csv1) \
+            .csv(ratings_csv1) \
             .drop("timestamp")  # Drop unused column
         ratings_df.show()
         if max_row_limit != -1:
