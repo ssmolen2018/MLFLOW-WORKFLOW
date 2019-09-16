@@ -91,8 +91,10 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
                                     "max_row_limit": max_row_limit},
                                    git_commit)
         ratings_parquet_uri = os.path.join(etl_data_run.info.artifact_uri, "ratings-parquet-dir")
+        ratings_parquet_data="file://"+etl_data_run.data.params.get("parquet_dir")
         print("############ START ALS  #############")
         print("ratings_parquet_uri="+ratings_parquet_uri)
+        print("ratings_parquet_data=",ratings_parquet_data)
         # We specify a spark-defaults.conf to override the default driver memory. ALS requires
         # significant memory. The driver memory property cannot be set by the application itself.
         als_run = _get_or_run("als", 
