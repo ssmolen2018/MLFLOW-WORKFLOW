@@ -22,7 +22,7 @@ from pyspark.ml.evaluation import RegressionEvaluator
 @click.option("--rank", default=12, type=int)
 @click.option("--cold-start-strategy", default="drop")
 def train_als(ratings_data, split_prop, max_iter, reg_param, rank, cold_start_strategy):
-    seed = 42
+    seed = 20
 
     spark = pyspark.sql.SparkSession.builder.getOrCreate()
 
