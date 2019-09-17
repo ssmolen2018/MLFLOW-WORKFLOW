@@ -69,9 +69,9 @@ def _get_or_run(entrypoint, parameters, git_commit, use_cache=True):
 
 
 @click.command()
-@click.option("--als-max-iter", default=10, type=int)
+@click.option("--als-max-iter", default=3, type=int)
 @click.option("--keras-hidden-units", default=20, type=int)
-@click.option("--max-row-limit", default=100000, type=int)
+@click.option("--max-row-limit", default=1000, type=int)
 def workflow(als_max_iter, keras_hidden_units, max_row_limit):
     # Note: The entrypoint names are defined in MLproject. The artifact directories
     # are documented by each step's .py file.
