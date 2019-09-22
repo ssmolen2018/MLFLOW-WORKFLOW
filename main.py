@@ -101,11 +101,13 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
                               {"ratings_data": ratings_parquet_data, "max_iter": str(als_max_iter)},
                               git_commit)
         als_model_uri = os.path.join(als_run.info.artifact_uri, "als-model")
+        als_model_data="file://"+als_run.data.params.get("model_dir")
         print("############ START KERAS  #############")
         print("als_model_uri="+als_model_uri)
+        print("als_model_data="+als_model_data)
         keras_params = {
-            "ratings_data": ratings_parquet_uri,
-            "als_model_uri": als_model_uri,
+            "ratings_data": ratings_parquet_data,
+            "als_model_uri": als_model_data,
             "hidden_units": keras_hidden_units,
         }
         _get_or_run("train_keras", keras_params, git_commit, use_cache=False)
