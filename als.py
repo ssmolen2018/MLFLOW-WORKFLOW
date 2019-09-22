@@ -60,6 +60,7 @@ def train_als(ratings_data, split_prop, max_iter, reg_param, rank, cold_start_st
     print('The model had a MSE on the (train) set of {0}'.format(train_mse))
     mlflow.log_metric("test_mse", test_mse)
     mlflow.log_metric("train_mse", train_mse)
+
     mlflow.spark.log_model(als_model, "als-model")
 
 
