@@ -104,7 +104,6 @@ def workflow(als_max_iter, keras_hidden_units, max_row_limit):
         
         print("############ START KERAS  #############")
         print("als_model_uri="+als_model_uri)
-        print("als_model_data="+als_model_data)
         keras_params = {
             "ratings_data": ratings_parquet_data,
             "als_model_uri": als_model_uri,
